@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <script type="text/javascript" src="script.js" defer></script>
 </head>
 <body>
@@ -34,21 +35,24 @@
 
     <section>
         <div class="container">
-        <div class="hero-grid">
-            <figure class="profile">
-            <img src="images/me.jpg" alt="My Profile Picture">
-            <figcaption>Based in Butuan City, PH</figcaption>
-            </figure>
-        <div>
-            <h2>Hi, I'm Jyd</h2>
-            <p id="intro-text" class="lead">I enjoy working on web development, programming, and exploring how technology can help people connect and innovate.</p>
-            <div>
-                <a class="view-btn" href="#project">View my work.</a>
-                <button class="view-btn toggle-edit" data-target="intro-text">Edit</button>
+            <div class="hero-grid">
+                <figure class="profile">
+                <img src="<%= imagePaths.profile %>" alt="My Profile Picture" id="profile-image">
+                <div class="label">
+                    <input type="file" accept="image/*" id="profile-file-input">
+                    <label for="profile-file-input"><i class="fa-solid fa-upload"></i> <strong>Upload File</strong></label>
+                </div>
+                 <figcaption>Based in Butuan City, PH</figcaption>
+                </figure>
+                <div>
+                    <h2>Hi, I'm Jyd</h2>
+                    <p id="intro-text" class="lead">I enjoy working on web development, programming, and exploring how technology can help people connect and innovate.</p>
+                    <div>
+                        <a class="view-btn" href="#project">View my work.</a>
+                        <button class="view-btn toggle-edit" data-target="intro-text">Edit</button>
+                    </div>
+                </div>    
             </div>
-        </div>    
-        
-        </div>
         </div>
     </section>
 
@@ -73,7 +77,16 @@
         <div class="cards">
 
          <article class="card">
-            <img src="images/proj3.jpg" alt="Screenshot of Project A" class="project-img" />
+            <div class="project-img-wrapper">
+                <img src="<%= imagePaths.project1 %>" alt="Screenshot of Project A" class="project-img" />
+                    <form class="upload-form" enctype="multipart/form-data">
+                        <input type="file" class="project-file-input" name="projectImage" id="project-file-1" data-project="1" style="display:none;">
+                        <label class="upload-btn" for="project-file-1" title="Update image">
+                            <i class="fa-solid fa-upload"></i>
+                        </label>
+                    </form>
+            </div>
+           
             <div class="card-body">
                 <h3>TrikeGo – Local Tricycle Booking System</h3>
                 <p id="proj1-desc"> A web-based and mobile-friendly platform designed to modernize local transportation. 
@@ -84,13 +97,21 @@
                 </p>
                 <div class="project-actions">
                     <button class="btn-outline toggle-edit" data-target="proj1-desc">Edit</button>
-                    <button class="btn btn-outline" data-img="images/proj3.jpg">View</button>
+                    <button class="btn btn-outline" data-img="<%= imagePaths.project1 %>">View</button>
                 </div>
             </div>
         </article>
 
         <article class="card">
-            <img src="images/proj2.png" alt="Screenshot of Project B" class="project-img"/>
+            <div class="project-img-wrapper">
+                <img src="<%= imagePaths.project2 %>" alt="Screenshot of Project B" class="project-img"/>
+                <form class="upload-form" enctype="multipart/form-data">
+                    <input type="file" class="project-file-input" name="projectImage" id="project-file-2" data-project="2" style="display:none;">
+                    <label class="upload-btn" for="project-file-2" title="Update image">
+                        <i class="fa-solid fa-upload"></i>
+                    </label>
+                </form>
+            </div>
             <div class="card-body">
                 <h3>Alon at Ani</h3>
                  <p id="proj2-desc">
@@ -101,11 +122,19 @@
                 </p>
                 <div class="project-actions">
                     <button class="btn-outline toggle-edit" data-target="proj2-desc">Edit</button>
-                    <button class="btn btn-outline" data-img="images/proj2.png">View</button>
+                    <button class="btn btn-outline" data-img="<%= imagePaths.project2 %>">View</button>
                 </div>
         </article>
         <article class="card">
-            <img src="images/proj1.png" alt="Screenshot of Project C" class="project-img"/>
+            <div class="project-img-wrapper">
+                <img src="<%= imagePaths.project3 %>" alt="Screenshot of Project C" class="project-img"/>
+                <form class="upload-form" enctype="multipart/form-data">
+                    <input type="file" class="project-file-input" name="projectImage" id="project-file-3" data-project="3" style="display:none;">
+                    <label class="upload-btn" for="project-file-3" title="Update image">
+                        <i class="fa-solid fa-upload"></i>
+                    </label>
+                </form>
+            </div>
             <div class="card-body">
                  <h3>ICT Café Usage Tracker</h3>
                  <p id="proj3-desc">
@@ -117,7 +146,7 @@
                  </p>
                  <div class="project-actions">
                     <button class="btn-outline toggle-edit" data-target="proj3-desc">Edit</button>
-                    <button class="btn btn-outline" data-img="images/proj1.png">View</button>
+                    <button class="btn btn-outline" data-img="<%= imagePaths.project3 %>">View</button>
                  </div>
             </div>
         </article>
@@ -125,6 +154,13 @@
         </div>
     </section>
 
+    <div id="imgModal" class="modal" aria-hidden="true" role="dialog" aria-label="Project image preview">
+        <div class="modal-wrapper">
+            <button class="modal-close" id="modalClose" aria-label="Close image preview">&times;</button>
+            <img id="modalImage" class="modal-content" alt="Project preview">
+        </div>
+    </div>
+    
     <section id="skills" class="section" aria-labelledby="skills-title">
         <div class="container">
             <h2 id="skills-title">SKILLS</h2>
@@ -150,12 +186,5 @@
 
     </main>
     <footer class="site-footer">© <span id="year">2025</span> Jade R. Vicente</footer>
-
-    <div id="imgModal" class="modal" aria-hidden="true" role="dialog" aria-label="Project image preview">
-        <div class="modal-wrapper">
-            <button class="modal-close" id="modalClose" aria-label="Close image preview">&times;</button>
-            <img id="modalImage" class="modal-content" alt="Project preview">
-        </div>
-    </div>
 </body>
 </html>
