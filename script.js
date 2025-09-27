@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  /* Dark Mode Switch*/
+  /* Dark Mode Switch */
   let darkmode = localStorage.getItem("darkmode");
   const modeSwitch = document.querySelector(".switch-mode");
 
@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /*Mobile Menu*/
+  /* Mobile Menu */
   const hamburger = document.querySelector(".hamburger");
   const navMenu = document.querySelector(".nav");
 
@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* Edit feature*/
+  /* Edit Feature */
   document.querySelectorAll(".toggle-edit").forEach((btn) => {
     const targetId = btn.getAttribute("data-target");
     const target = document.getElementById(targetId);
@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  /*Modal */
+  /* Modal */
   const modal = document.getElementById("imgModal");
   const modalImg = document.getElementById("modalImage");
   const modalClose = document.getElementById("modalClose");
@@ -102,71 +102,4 @@ document.addEventListener("DOMContentLoaded", () => {
       document.body.style.overflow = "";
     });
   }
-
-  /* Profile Image Upload */
-  const profileInput = document.getElementById("profile-file-input");
-  const profileImg = document.getElementById("profile-image");
-
-  if (profileInput && profileImg) {
-    profileInput.addEventListener("change", async (e) => {
-      const file = e.target.files[0];
-      if (!file) return;
-
-      const formData = new FormData();
-      formData.append("profileImage", file);
-
-      try {
-        const response = await fetch("/upload/profile", {
-          method: "POST",
-          body: formData,
-        });
-        const result = await response.json();
-
-        if (result.success) {
-          profileImg.src = result.imagePath;
-        } else {
-          console.error("Profile upload failed:", result);
-        }
-      } catch (err) {
-        console.error("Profile upload error:", err);
-      }
-    });
-  }
-
-  /*Project Image Uploads*/
-  document.querySelectorAll(".project-file-input").forEach((input) => {
-    const card = input.closest(".card");
-    const projectImg = card?.querySelector(".project-img");
-    const viewBtn = card?.querySelector("[data-img]");
-    const projectId = input.dataset.project;
-
-    if (!projectId || !projectImg) return;
-
-    input.addEventListener("change", async (e) => {
-      const file = e.target.files[0];
-      if (!file) return;
-
-      const formData = new FormData();
-      formData.append("projectImage", file);
-
-      try {
-        const response = await fetch(`/upload/project/${projectId}`, {
-          method: "POST",
-          body: formData,
-        });
-        const result = await response.json();
-
-        if (result.success) {
-          projectImg.src = result.imagePath;
-          if (viewBtn) {
-            viewBtn.setAttribute("data-img", result.imagePath);
-          }
-        } else {
-          console.error(`Project ${projectId} upload failed:`, result);
-        }
-      } catch (err) {
-        console.error(`Project ${projectId} upload error:`, err);
-      }
-    });
-  });
 });

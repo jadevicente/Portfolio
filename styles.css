@@ -152,7 +152,7 @@
        #project .card { display: block; }
     }
  
-/*Upload label/button*/
+/*Upload label/button
   .label {display: inline-block; text-transform: uppercase; color: #fff; background-color: var(--panel); 
           text-align: center; padding: 7px 17px; font-size: 12px; letter-spacing: 1.5px; user-select: none; 
           border-radius: 10px; box-shadow: 5px 15px 25px rgba(0,0,0,0.35); cursor: pointer;
@@ -160,11 +160,11 @@
   input[type="file"]{display: none;}
   .label i{font-size: 15px; margin-right: 10px;}
   .label:active {transform: scale(0.9);}
-  .label:hover {background-color: #bcaf95;}
+  .label:hover {background-color: #bcaf95;} 
 
 
-/* Mini upload icon*/
+ Mini upload icon
   .upload-form .upload-btn { display: flex; justify-content: center; align-items: center; margin-top: 8px; font-size: 15px; color: var(--upload-btn);
                              background: none; border: none; cursor: pointer; padding: 0; }
-  .upload-form .upload-btn:hover i { color: gray; transform: scale(1.15); }
+  .upload-form .upload-btn:hover i { color: gray; transform: scale(1.15); } */
 
